@@ -1,0 +1,19 @@
+body{
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+canvas{
+}
+.block{
+    border: none;
+    border-radius: 10px;
+    
+}
+.yy{
+    background-color: aquamarine;
+}
+.tt{
+    background-color: aqua;
+}
