@@ -12,11 +12,13 @@ function Home(){
 
     let [nick, setNick] = useState('')
 
+    const plid = v4()
 
     function pushNick(){
+      
 
         const player ={
-          id: v4(),
+          id: plid,
           nick: nick,
           x: getRandomArbitrary(20, window.innerWidth-20),
           y: getRandomArbitrary(20, window.innerHeight-20),
@@ -34,7 +36,7 @@ function Home(){
         <div className='form'>
             <input className='input nickName' placeholder='nick name' value={nick} onChange={e => setNick(e.target.value)}></input>
 
-            <Link onClick={pushNick} className='btn paly' to="/game">play</Link>
+            <Link onClick={pushNick} className='btn paly' to="/game" params={{ player_id: plid }}>play</Link>
         </div>
       </div>
     )

@@ -1,17 +1,23 @@
 import React from 'react'
-import {useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import Render from './Render';
 
 
-
+console.log(this.props.match.params.player_id);
 function Game(){
-
-  console.log(useSelector((state)=>state.players.players));
-    return (
-      <div>
-        <canvas id="cnv"></canvas>
-      </div>
-      
-    )
+    var players = useSelector((state)=>state.players.players)
+    var c = document.getElementById('cnv')
+    var ctx = c.getContext('2d')
+    const width = c.width = window.innerWidth;
+    const height = c.height = window.innerHeight;
     
+    
+
+    function name() {
+        Render(ctx, players)
+
+        window.requestAnimationFrame(name)
+    }
+    window.requestAnimationFrame(name)
 }
 export default Game
