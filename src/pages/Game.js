@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import Render from './Render';
 
 
-console.log(this.props.match.params.player_id);
 function Game(){
     var players = useSelector((state)=>state.players.players)
     var c = document.getElementById('cnv')

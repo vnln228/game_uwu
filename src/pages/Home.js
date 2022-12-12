@@ -36,7 +36,7 @@ function Home(){
         <div className='form'>
             <input className='input nickName' placeholder='nick name' value={nick} onChange={e => setNick(e.target.value)}></input>
 
-            <Link onClick={pushNick} className='btn paly' to="/game" params={{ player_id: plid }}>play</Link>
+            <Link onClick={pushNick} className='btn paly' to="/game">play</Link>
         </div>
       </div>
     )
