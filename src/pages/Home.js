@@ -6,38 +6,46 @@ import { addPlayer } from './redux/slises'
 import { v4 } from 'uuid';
     
 function getRandomArbitrary(min, max) {return Math.random() * (max - min) + min;}
+
+const id = v4()
+
 function Home(){
-  
+
+    
     const dispatch = useDispatch()
 
     let [nick, setNick] = useState('')
 
-    const plid = v4()
+
+  
 
     function pushNick(){
       
 
         const player ={
-          id: plid,
+          id: id,
           nick: nick,
           x: getRandomArbitrary(20, window.innerWidth-20),
           y: getRandomArbitrary(20, window.innerHeight-20),
           rad: 20,
           rot: 2,
           heal: 100,
-          color: '#28537d',
+          color: '#e37878',
           speed: 10
         }
         dispatch(addPlayer(player)); 
+        
+        
         nick = '' 
     }
     return (
       <div className='home'>
-        <div className='form'>
+        <form className='form'>
             <input className='input nickName' placeholder='nick name' value={nick} onChange={e => setNick(e.target.value)}></input>
 
-            <Link onClick={pushNick} className='btn paly' to="/game">play</Link>
-        </div>
+            <Link onClick={pushNick} state={{plid:id}} className='input btn' to='/game'>play</Link>
+            
+        </form>
       </div>
     )
 }

@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import Move from './Move';
 
 
 
@@ -17,11 +18,21 @@ function Render(canv, players) {
         canv.restore();
 
         canv.beginPath();
-        canv.fillText(p.heal, p.x-p.rad/2, p.y-p.rad-10)
+        
+        
         canv.arc(p.x, p.y, p.rad, 0, Math.PI*2);
         canv.fillStyle = p.color;
         canv.fill();
+        canv.fillStyle = 'black';
+        canv.fillText(p.nick, p.x-p.rad/2, p.y-p.rad-10)
+        canv.fillStyle = 'black';
+        canv.fillText(p.heal, p.x-9, p.y+3,)
+
         canv.closePath();
+
+
+
+        Move(players, player_id)
     }
     players.map((player)=>{
         draw(player)
