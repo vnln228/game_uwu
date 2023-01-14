@@ -14,10 +14,13 @@ const playersSlice = createSlice({
         },
         removePlayer(state, action) {
             state.players = state.players.filter(player => player.id !== action.payload.id);
+        },
+        incrementPlayerX(state, action){
+            state.players[state.players.find(player => player.id === action.payload).id].x+=1
         }
     },
 });
 
-export const {addPlayer, removePlayer} = playersSlice.actions;
+export const {addPlayer, removePlayer, incrementPlayerX} = playersSlice.actions;
 
 export default playersSlice.reducer

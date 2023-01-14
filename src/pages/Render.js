@@ -1,9 +1,10 @@
 import { useSelector } from "react-redux";
+import store from "./redux/store";
 import Move from './Move';
 
 
 
-function Render(canv, players) {
+function Render(canv, players, id) {
     canv.clearRect(0, 0, window.innerWidth, window.innerHeight)
     canv.globalAlpha = 0.9
     
@@ -29,13 +30,17 @@ function Render(canv, players) {
         canv.fillText(p.heal, p.x-9, p.y+3,)
 
         canv.closePath();
+        
 
 
 
-        Move(players, player_id)
+        
     }
     players.map((player)=>{
         draw(player)
     })
+        Move(players, id)
+    
+    
 }
 export default Render
