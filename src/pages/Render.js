@@ -39,7 +39,6 @@ function Render(canv, players, id) {
     players.map((player)=>{
         draw(player)
     })
-        Move(players, id)
     
     
 }

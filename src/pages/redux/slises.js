@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-// import { uuid } from 'uuidv4';
 
 export let initialState = {
   players:[]
@@ -13,14 +12,27 @@ const playersSlice = createSlice({
             state.players.push(action.payload);
         },
         removePlayer(state, action) {
-            state.players = state.players.filter(player => player.id !== action.payload.id);
+            state.players = state.players.filter(player => player.id === action.payload);
         },
-        incrementPlayerX(state, action){
-            state.players[state.players.find(player => player.id === action.payload).id].x+=1
+        move(state, action){
+            // state.players[action.payload].x+=1
+            if (action.payload.move==='r') {
+                state.players[action.payload.id].x+=1
+            }
+            if (action.payload.move==='l') {
+                state.players[action.payload.id].x-=1
+            }
+            if (action.payload.move==='u') {
+                state.players[action.payload.id].y-=1
+            }
+            if (action.payload.move==='d') {
+                state.players[action.payload.id].y+=1
+            }
+
         }
     },
 });
 
-export const {addPlayer, removePlayer, incrementPlayerX} = playersSlice.actions;
+export const {addPlayer, removePlayer, move} = playersSlice.actions;
 
 export default playersSlice.reducer

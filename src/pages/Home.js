@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import './home.css'
 import { addPlayer } from './redux/slises'
@@ -25,13 +25,15 @@ function Home(){
         const player ={
           id: id,
           nick: nick,
-          x: getRandomArbitrary(20, window.innerWidth-20),
-          y: getRandomArbitrary(20, window.innerHeight-20),
+          // x: getRandomArbitrary(20, window.innerWidth-20),
+          // y: getRandomArbitrary(20, window.innerHeight-20),
+          x: window.innerWidth/2,
+          y: window.innerHeight/2,
           rad: 20,
           rot: 2,
           heal: 100,
           color: '#e37878',
-          speed: 10
+          speed: 1
         }
         dispatch(addPlayer(player)); 
         
@@ -43,7 +45,7 @@ function Home(){
         <form className='form'>
             <input className='input nickName' placeholder='nick name' value={nick} onChange={e => setNick(e.target.value)}></input>
 
-            <Link onClick={pushNick} state={{plid:id}} className='input btn' to='/game'>play</Link>
+            <Link onClick={pushNick} state={{plid:useSelector((state)=>state.players.players)}} className='input btn' to='/game'>play</Link>
             
         </form>
       </div>
